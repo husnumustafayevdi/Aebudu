@@ -6,7 +6,7 @@ from telegram.error import BadRequest, Unauthorized
 from telegram.ext import CommandHandler, CallbackQueryHandler, run_async
 
 import SaitamaRobot.modules.sql.connection_sql as sql
-from SaitamaRobot import dispatcher, DRAGONS, DEV_USERS
+from SaitamaRobot import dispatcher, DRAGONS
 from SaitamaRobot.modules.helper_funcs import chat_status
 from SaitamaRobot.modules.helper_funcs.alternate import send_message, typing_action
 
@@ -261,11 +261,10 @@ def connected(bot: Bot, update: Update, chat, user_id, need_admin=True):
         ismember = getstatusadmin.status in ("member")
         isallow = sql.allow_connect_to_chat(conn_id)
 
-        if ((isadmin) or (isallow and ismember) or (user.id in DRAGONS) or
-            (user.id in DEV_USERS)):
+        if ((isadmin) or (isallow and ismember) or (user.id in DRAGONS)):
             if need_admin is True:
                 if (getstatusadmin.status in ("administrator", "creator") or
-                        user_id in DRAGONS or user.id in DEV_USERS):
+                        user_id in DRAGONS):
                     return conn_id
                 else:
                     send_message(
