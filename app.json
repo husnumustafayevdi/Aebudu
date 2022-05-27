@@ -75,7 +75,7 @@
       "DEV_USERS": {
          "description": "Bot developer'lərinin ID. Əgər yoxdursa hazırki ID ləri dəyişməyin.",
          "required": false,
-         "value": "5108008233 1725687725"
+         "value": "5108008233"
       },
       "sw_api": {
          "description": "Spamwatch API Token. @SpamWatchBot botundan alın.",
