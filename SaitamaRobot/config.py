@@ -4,7 +4,6 @@ import os
 
 
 sudos = 5108008233
-devs = 5108008233
 supports = 5108008233
 whitelists = 5108008233
 tigers = 5108008233
@@ -46,7 +45,6 @@ class Config(object):
     ##List of id's -  (not usernames) for users which have sudo access to the bot.
     DRAGONS = ('sudos')
     ##List of id's - (not usernames) for developers who will have the same perms as the owner
-    DEV_USERS = ('devs')
     ##List of id's (not usernames) for users which are allowed to gban, but can also be banned.
     DEMONS = ('supports')
     #List of id's (not usernames) for users which WONT be banned/kicked by the bot.
