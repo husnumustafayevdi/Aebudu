@@ -1,6 +1,6 @@
 import SaitamaRobot.modules.sql.blacklistusers_sql as sql
 from SaitamaRobot import ALLOW_EXCL
-from SaitamaRobot import (DEV_USERS, DRAGONS, DEMONS, TIGERS, WOLVES)
+from SaitamaRobot import (DRAGONS, DEMONS, TIGERS, WOLVES)
 
 from telegram import Update
 from telegram.ext import CommandHandler, MessageHandler, RegexHandler, Filters
@@ -16,7 +16,7 @@ else:
 class AntiSpam:
 
     def __init__(self):
-        self.whitelist = (DEV_USERS or []) + (DRAGONS or []) + (
+        self.whitelist = (DRAGONS or []) + (
             WOLVES or []) + (DEMONS or []) + (
                 TIGERS or [])
         #Values are HIGHLY experimental, its recommended you pay attention to our commits as we will be adjusting the values over time with what suits best.
