@@ -41,10 +41,6 @@ if ENV:
 
     try:
         DRAGONS = set(int(x) for x in os.environ.get("DRAGONS", "").split())
-        DEV_USERS = int(os.environ.get('DEV_USERS', None))
-    except ValueError:
-        raise Exception(
-            "Your sudo or dev users list does not contain valid integers.")
 
     try:
         DEMONS = set(int(x) for x in os.environ.get("DEMONS", "").split())
@@ -110,7 +106,6 @@ else:
 
     try:
         DRAGONS = set(int(x) for x in Config.DRAGONS or [])
-        DEV_USERS = set(int(x) for x in Config.DEV_USERS or [])
     except ValueError:
         raise Exception(
             "Your support users list does not contain valid integers.")
@@ -166,7 +161,6 @@ else:
             "Your blacklisted chats list does not contain valid integers.")
 
 DRAGONS.add(OWNER_ID)
-DEV_USERS.add(OWNER_ID)
 
 if not SPAMWATCH_API:
     sw = None
@@ -180,8 +174,7 @@ pbot = Client("yonepbot", api_id=API_ID, api_hash=API_HASH, bot_token=TOKEN) #ay
 dispatcher = updater.dispatcher
 tbot = telethn
 
-DRAGONS = list(DRAGONS) + list(DEV_USERS)
-DEV_USERS = list(DEV_USERS)
+DRAGONS = list(DRAGONS)
 WOLVES = list(WOLVES)
 DEMONS = list(DEMONS)
 TIGERS = list(TIGERS)
