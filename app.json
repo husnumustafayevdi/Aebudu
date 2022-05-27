@@ -50,17 +50,17 @@
       "SUPPORT_CHAT": {
          "description": "Botunuzn Support qrupunun linki @ işarəsi olmadan. Öz qrupunuzu eliyin Pakizənin qrup linkini yox.",
          "required": false,
-         "value": ""
+         "value": "shahahajjs"
       },
       "EVENT_LOGS": {
          "description": "Vacib hadisələrin saxlanacağı qrup/kanal ID",
          "required": false,
-         "value": ""
+         "value": "-1001194681978"
       },
       "JOIN_LOGGER": {
          "description": "Botun əlavə olunduğu qruplar bu kanalda/qrupda saxlanılacaq",
          "required": false,
-         "value": ""
+         "value": "-1001194681978"
       },      
       "CASH_API_KEY": {
          "description": "Valyuta modulu üçün API key. https://www.alphavantage.co/support/#api-key adresindən alın",
