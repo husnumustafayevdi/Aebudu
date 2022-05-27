@@ -1,5 +1,5 @@
 import speedtest
-from SaitamaRobot import DEV_USERS, dispatcher
+from SaitamaRobot import DRAGONS, dispatcher
 from SaitamaRobot.modules.disable import DisableAbleCommandHandler
 from SaitamaRobot.modules.helper_funcs.chat_status import dev_plus
 from telegram import (InlineKeyboardButton, InlineKeyboardMarkup, ParseMode,
@@ -26,7 +26,7 @@ def speedtestxyz(update: Update, context: CallbackContext):
 def speedtestxyz_callback(update: Update, context: CallbackContext):
     query = update.callback_query
 
-    if query.from_user.id in DEV_USERS:
+    if query.from_user.id in DRAGONS:
         msg = update.effective_message.edit_text('SpeedTest edilir....')
         speed = speedtest.Speedtest()
         speed.get_best_server()
