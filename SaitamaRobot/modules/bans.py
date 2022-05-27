@@ -5,7 +5,7 @@ from telegram.error import BadRequest
 from telegram.ext import CallbackContext, CommandHandler, Filters, run_async
 from telegram.utils.helpers import mention_html
 
-from SaitamaRobot import (DEV_USERS, LOGGER, OWNER_ID, DRAGONS, DEMONS, TIGERS,
+from SaitamaRobot import (LOGGER, OWNER_ID, DRAGONS, DEMONS, TIGERS,
                           WOLVES, dispatcher)
 from SaitamaRobot.modules.disable import DisableAbleCommandHandler
 from SaitamaRobot.modules.helper_funcs.chat_status import (
@@ -49,17 +49,10 @@ def ban(update: Update, context: CallbackContext) -> str:
         message.reply_text("Oh yeah, özümü banlayım, axmaq!")
         return log_message
 
-    if is_user_ban_protected(chat, user_id, member) and user not in DEV_USERS:
+    if is_user_ban_protected(chat, user_id, member) and user not in DRAGONS:
         if user_id == OWNER_ID:
             message.reply_text(
                 "Nə? Sən mənim sahibimi banlamağa çalışırsan?mal")
-            return log_message
-        elif user_id in DEV_USERS:
-            message.reply_text("Bu şəxsə bunu etməyəcəm.")
-            return log_message
-        elif user_id in DRAGONS:
-            message.reply_text(
-                "Mən əjdaha userimi banlamayacam.")
             return log_message
         elif user_id in DEMONS:
             message.reply_text(
