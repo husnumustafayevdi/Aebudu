@@ -1,7 +1,7 @@
 from functools import wraps
 from cachetools import TTLCache
 from threading import RLock
-from SaitamaRobot import (DEL_CMDS, DEV_USERS, DRAGONS, SUPPORT_CHAT, DEMONS,
+from SaitamaRobot import (DEL_CMDS, DRAGONS, SUPPORT_CHAT, DEMONS,
                           TIGERS, WOLVES, dispatcher)
 
 from telegram import Chat, ChatMember, ParseMode, Update
@@ -16,21 +16,21 @@ def is_whitelist_plus(chat: Chat,
                       user_id: int,
                       member: ChatMember = None) -> bool:
     return any(user_id in user
-               for user in [WOLVES, TIGERS, DEMONS, DRAGONS, DEV_USERS])
+               for user in [WOLVES, TIGERS, DEMONS, DRAGONS])
 
 
 def is_support_plus(chat: Chat,
                     user_id: int,
                     member: ChatMember = None) -> bool:
-    return user_id in DEMONS or user_id in DRAGONS or user_id in DEV_USERS
+    return user_id in DEMONS or user_id in DRAGONS
 
 
 def is_sudo_plus(chat: Chat, user_id: int, member: ChatMember = None) -> bool:
-    return user_id in DRAGONS or user_id in DEV_USERS
+    return user_id in DRAGONS
 
 
 def is_user_admin(chat: Chat, user_id: int, member: ChatMember = None) -> bool:
-    if (chat.type == 'private' or user_id in DRAGONS or user_id in DEV_USERS or
+    if (chat.type == 'private' or user_id in DRAGONS or
             chat.all_members_are_administrators or
             user_id in [777000, 1087968824
                        ]):  # Count telegram and Group Anonymous as admin
@@ -73,7 +73,7 @@ def can_delete(chat: Chat, bot_id: int) -> bool:
 def is_user_ban_protected(chat: Chat,
                           user_id: int,
                           member: ChatMember = None) -> bool:
-    if (chat.type == 'private' or user_id in DRAGONS or user_id in DEV_USERS or
+    if (chat.type == 'private' or user_id in DRAGONS or
             user_id in WOLVES or user_id in TIGERS or
             chat.all_members_are_administrators or
             user_id in [777000, 1087968824
@@ -99,7 +99,7 @@ def dev_plus(func):
         bot = context.bot
         user = update.effective_user
 
-        if user.id in DEV_USERS:
+        if user.id in DRAGONS:
             return func(update, context, *args, **kwargs)
         elif not user:
             pass
