@@ -53,6 +53,8 @@ def ban(update: Update, context: CallbackContext) -> str:
         if user_id == OWNER_ID:
             message.reply_text(
                 "Nə? Sən mənim sahibimi banlamağa çalışırsan?mal")
+        elif user_id in DRAGONS:
+            message.reply_text("Bu şəxsə bunu etməyəcəm.")
             return log_message
         elif user_id in DEMONS:
             message.reply_text(
