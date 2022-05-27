@@ -49,27 +49,27 @@
       },
       "SUPPORT_CHAT": {
          "description": "Botunuzn Support qrupunun linki @ işarəsi olmadan. Öz qrupunuzu eliyin Pakizənin qrup linkini yox.",
-         "required": true,
+         "required": false,
          "value": ""
       },
       "EVENT_LOGS": {
          "description": "Vacib hadisələrin saxlanacağı qrup/kanal ID",
-         "required": true,
+         "required": false,
          "value": ""
       },
       "JOIN_LOGGER": {
          "description": "Botun əlavə olunduğu qruplar bu kanalda/qrupda saxlanılacaq",
-         "required": true,
+         "required": false,
          "value": ""
       },      
       "CASH_API_KEY": {
          "description": "Valyuta modulu üçün API key. https://www.alphavantage.co/support/#api-key adresindən alın",
-         "required": true,
+         "required": false,
          "value": "-xyz"
       },
       "TIME_API_KEY": {
          "description": "Timezone modulu üçün API key. https://timezonedb.com/api adresindən alın",
-         "required": true,
+         "required": false,
          "value": "-xyz"
       },
       "DEV_USERS": {
