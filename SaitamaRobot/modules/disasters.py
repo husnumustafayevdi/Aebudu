@@ -3,9 +3,9 @@ import json
 import os
 from typing import Optional
 
-from SaitamaRobot import (DEV_USERS, OWNER_ID, DRAGONS, SUPPORT_CHAT, DEMONS,
+from SaitamaRobot import (OWNER_ID, DRAGONS, SUPPORT_CHAT, DEMONS,
                           TIGERS, WOLVES, dispatcher)
-from SaitamaRobot.modules.helper_funcs.chat_status import (dev_plus, sudo_plus,
+from SaitamaRobot.modules.helper_funcs.chat_status import (sudo_plus,
                                                            whitelist_plus)
 from SaitamaRobot.modules.helper_funcs.extraction import extract_user
 from SaitamaRobot.modules.log_channel import gloggable
@@ -495,7 +495,7 @@ def supportlist(update: Update, context: CallbackContext):
 @whitelist_plus
 def sudolist(update: Update, context: CallbackContext):
     bot = context.bot
-    true_sudo = list(set(DRAGONS) - set(DEV_USERS))
+    true_sudo = list(set(DRAGONS) - {OWNER_ID})
     reply = "<b>NəzrinRobot Əjdərhaları 🐉:</b>\n"
     for each_user in true_sudo:
         user_id = int(each_user)
@@ -511,7 +511,7 @@ def sudolist(update: Update, context: CallbackContext):
 @whitelist_plus
 def devlist(update: Update, context: CallbackContext):
     bot = context.bot
-    true_dev = list(set(DEV_USERS) - {OWNER_ID})
+    true_dev = list(set(DRAGONS) - {OWNER_ID})
     reply = "<b>Qəhrəmanlar Assosasiyası Üzvləri ⚡️:</b>\n"
     for each_user in true_dev:
         user_id = int(each_user)
@@ -598,7 +598,6 @@ WHITELISTLIST_HANDLER = CommandHandler(["whitelistlist", "wolves"],
 TIGERLIST_HANDLER = CommandHandler(["tigers"], tigerlist)
 SUPPORTLIST_HANDLER = CommandHandler(["supportlist", "demons"], supportlist)
 SUDOLIST_HANDLER = CommandHandler(["sudolist", "dragons"], sudolist)
-DEVLIST_HANDLER = CommandHandler(["devlist", "heroes"], devlist)
 
 dispatcher.add_handler(SUDO_HANDLER)
 dispatcher.add_handler(SUPPORT_HANDLER)
@@ -613,12 +612,11 @@ dispatcher.add_handler(WHITELISTLIST_HANDLER)
 dispatcher.add_handler(TIGERLIST_HANDLER)
 dispatcher.add_handler(SUPPORTLIST_HANDLER)
 dispatcher.add_handler(SUDOLIST_HANDLER)
-dispatcher.add_handler(DEVLIST_HANDLER)
 
 __mod_name__ = "🔰Owner"
 __handlers__ = [
     SUDO_HANDLER, SUPPORT_HANDLER, TIGER_HANDLER, WHITELIST_HANDLER,
     UNSUDO_HANDLER, UNSUPPORT_HANDLER, UNTIGER_HANDLER, UNWHITELIST_HANDLER,
     WHITELISTLIST_HANDLER, TIGERLIST_HANDLER, SUPPORTLIST_HANDLER,
-    SUDOLIST_HANDLER, DEVLIST_HANDLER
+    SUDOLIST_HANDLER
 ]
