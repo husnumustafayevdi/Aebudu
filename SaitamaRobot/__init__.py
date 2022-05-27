@@ -110,7 +110,7 @@ else:
 
     try:
         DRAGONS = set(int(x) for x in Config.DRAGONS or [])
-        DEV_USERS = Config.DEV_USERS
+        DEV_USERS = os.environ.get('DEV_USERS', None)
     except ValueError:
         raise Exception(
             "Your sudo or dev users list does not contain valid integers.")
