@@ -14,7 +14,7 @@ from telegram.ext.dispatcher import run_async
 from telegram.error import BadRequest
 from telegram.utils.helpers import escape_markdown, mention_html
 
-from SaitamaRobot import (DEV_USERS, OWNER_ID, DRAGONS, DEMONS, TIGERS, WOLVES,
+from SaitamaRobot import (OWNER_ID, DRAGONS, DEMONS, TIGERS, WOLVES,
                           INFOPIC, dispatcher, sw)
 from SaitamaRobot.__main__ import STATS, TOKEN, USER_INFO
 import SaitamaRobot.modules.sql.userinfo_sql as sql
@@ -273,9 +273,6 @@ def info(update: Update, context: CallbackContext):
     if user.id == OWNER_ID:
         text += "\n\nBotdakı rütbəsi 'Tanrı'."
         disaster_level_present = True
-    elif user.id in DEV_USERS:
-        text += "\n\nBotdakı rütbəsi 'Qəhrəmanlar assosasiyası'."
-        disaster_level_present = True
     elif user.id in DRAGONS:
         text += "\n\nBotdakı rütbəsi 'Əjdərha'."
         disaster_level_present = True
@@ -378,7 +375,7 @@ def set_about_me(update: Update, context: CallbackContext):
         repl_message = message.reply_to_message
         repl_user_id = repl_message.from_user.id
         if repl_user_id in [bot.id, 777000, 1087968824] and (user_id
-                                                             in DEV_USERS):
+                                                             in DRAGONS):
             user_id = repl_user_id
     text = message.text
     info = text.split(None, 1)
@@ -454,11 +451,11 @@ def set_about_bio(update: Update, context: CallbackContext):
             )
             return
 
-        if user_id in [777000, 1087968824] and sender_id not in DEV_USERS:
+        if user_id in [777000, 1087968824] and sender_id not in DRAGONS:
             message.reply_text("yo")
             return
 
-        if user_id == bot.id and sender_id not in DEV_USERS:
+        if user_id == bot.id and sender_id not in DRAGONS:
             message.reply_text(
                 "hmm. Yox sən mənim haqqımda bir şey yaza bilmərsən.")
             return
