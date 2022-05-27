@@ -5,7 +5,7 @@ import time
 from functools import partial
 
 import SaitamaRobot.modules.sql.welcome_sql as sql
-from SaitamaRobot import (DEV_USERS, LOGGER, OWNER_ID, DRAGONS, DEMONS, TIGERS,
+from SaitamaRobot import (LOGGER, OWNER_ID, DRAGONS, DEMONS, TIGERS,
                           WOLVES, sw, dispatcher, JOIN_LOGGER)
 from SaitamaRobot.modules.helper_funcs.chat_status import (
     is_user_ban_protected,
@@ -177,15 +177,7 @@ def new_member(update: Update, context: CallbackContext):
                                f"#USER_JOINED\n"
                                f"Aykhan usta gəldi")
                 continue
-
-            # Welcome Devs
-            elif new_mem.id in DEV_USERS:
-                update.effective_message.reply_text(
-                    "Vau! Böyük şəxsiyyətlərdən biri developerim Aykhan gəldi!",
-                    reply_to_message_id=reply,
-                )
-                continue
-
+        
             # Welcome Sudos
             elif new_mem.id in DRAGONS:
                 update.effective_message.reply_text(
@@ -486,13 +478,6 @@ def left_member(update: Update, context: CallbackContext):
                     "Aykhan Usta qrupu tərk etdi :(..", reply_to_message_id=reply)
                 return
 
-            # Give the devs a special goodbye
-            elif left_mem.id in DEV_USERS:
-                update.effective_message.reply_text(
-                    "RoBotlarimTg'da görüşərik! :)",
-                    reply_to_message_id=reply,
-                )
-                return
 
             # if media goodbye, use appropriate function for it
             if goodbye_type != sql.Types.TEXT and goodbye_type != sql.Types.BUTTON_TEXT:
