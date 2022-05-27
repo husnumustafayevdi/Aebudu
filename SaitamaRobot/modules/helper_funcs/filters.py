@@ -1,4 +1,4 @@
-from SaitamaRobot import DEV_USERS, DRAGONS, DEMONS
+from SaitamaRobot import DRAGONS, DEMONS
 from telegram import Message
 from telegram.ext import BaseFilter
 
@@ -18,13 +18,6 @@ class CustomFilters(object):
             return bool(message.from_user and message.from_user.id in DRAGONS)
 
     sudo_filter = _Sudoers()
-
-    class _Developers(BaseFilter):
-
-        def filter(self, message: Message):
-            return bool(message.from_user and message.from_user.id in DEV_USERS)
-
-    dev_filter = _Developers()
 
     class _MimeType(BaseFilter):
 
