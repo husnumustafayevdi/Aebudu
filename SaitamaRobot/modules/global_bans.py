@@ -4,7 +4,7 @@ from datetime import datetime
 from io import BytesIO
 from SaitamaRobot.modules.sql.users_sql import get_user_com_chats
 import SaitamaRobot.modules.sql.global_bans_sql as sql
-from SaitamaRobot import (DEV_USERS, EVENT_LOGS, OWNER_ID, STRICT_GBAN, DRAGONS,
+from SaitamaRobot import (EVENT_LOGS, OWNER_ID, STRICT_GBAN, DRAGONS,
                           SUPPORT_CHAT, SPAMWATCH_SUPPORT_CHAT, DEMONS, TIGERS,
                           WOLVES, sw, dispatcher)
 from SaitamaRobot.modules.helper_funcs.chat_status import (is_user_admin,
@@ -64,12 +64,6 @@ def gban(update: Update, context: CallbackContext):
     if not user_id:
         message.reply_text(
             "Bir istifadəçiyə istinad etmirsiniz.."
-        )
-        return
-
-    if int(user_id) in DEV_USERS:
-        message.reply_text(
-            "Bu istifadəçi RoBotlarimTg-in bir parçasıdır\nOna qarşı bunu edə bilmərəm."
         )
         return
 
